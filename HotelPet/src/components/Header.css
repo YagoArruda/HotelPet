@@ -1,0 +1,30 @@
+.header {
+    background-color: #09b385;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+}
+
+.headerHalf {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+    width: 50%;
+}
+
+.headerHalfInverse {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 60px;
+    width: 50%;
+}
+
+.headerButton {
+    border-style: none;
+    color: white;
+    background-color: #09b385;
+}
