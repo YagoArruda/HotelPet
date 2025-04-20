@@ -1,0 +1,43 @@
+.width50{
+    width: 50%;
+}
+
+.justify{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+
+.textCenter{
+    text-align: center;
+}
+
+.areaInformations{
+    display: flex;
+}
+
+.button{
+    display: flex;
+    background-color: #00a487;
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.34);
+    margin: 10px;
+    height: 2rem;
+    font-size: medium;
+    justify-content: center;
+    justify-items: center;
+    padding-top: 5px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.selected{
+    scale: 1.05;
+}
+
+.notSelected{
+    scale: 0.95;
+    opacity: 70%;
+    filter: grayscale(30%)
+}

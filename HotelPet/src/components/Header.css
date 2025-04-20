@@ -27,4 +27,10 @@
     border-style: none;
     color: white;
     background-color: #09b385;
+    font-weight: bold;
+}
+
+.noLinkStyle{
+    color: inherit;
+    text-decoration: none;
 }

@@ -1,6 +1,7 @@
 import '../App.css'
 import './Header.css'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header(){
     const navigate = useNavigate()
@@ -13,12 +14,15 @@ function Header(){
     return (
         <header className='header'>
             <div className='headerHalf'>
-                <h1>HotelPet</h1>
+                <h1>
+                    <Link to='/' className='noLinkStyle'>HotelPet</Link>
+                </h1>
             </div>
 
             <div className='headerHalfInverse'>
-                <button className='headerButton' onClick={Autenticar}><p>Hospedagens</p></button>
-                <button className='headerButton' onClick={Autenticar}><p>Cadastros</p></button>
+                <p className='headerButton' onClick={Autenticar}>
+                    <Link to='/' className='noLinkStyle'>Agenda</Link>
+                </p>
             </div>
 
         </header>
