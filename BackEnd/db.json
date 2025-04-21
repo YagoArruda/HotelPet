@@ -1,0 +1,20 @@
+[
+    {
+        "nome_Animal": "Nabe",
+        "nome_Tutor": "Lucas",
+        "contato_Tutor": "10xx-xx90",
+        "especie": "Cachorro",
+        "raca": "Pug",
+        "entrada": "20/04/2025",
+        "saida": "*"
+    },
+    {
+        "nome_Animal": "Pluffy",
+        "nome_Tutor": "Ana",
+        "contato_Tutor": "32xx-xx41",
+        "especie": "Gato",
+        "raca": "Peludo",
+        "entrada": "10/04/2025",
+        "saida": "21/04/2025"
+    }
+]

@@ -29,13 +29,12 @@
 }
 
 .loginButton {
-    display: block;
-    margin: 10px;
-    max-width: 20rem;
-    max-height: 1.6rem;
+    width: 70px;
     border-radius: 10px 10px 10px 10px;
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.34);
     color: white;
     background-color: #09b385;
+    text-align: center;
+    font-weight: bold;
 }

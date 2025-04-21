@@ -1,0 +1,48 @@
+.justify{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-start{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+
+.noListStyle3{
+    list-style: none;
+    background-color: #09b385;
+
+    border-radius: 10px 10px 10px 10px;
+    padding: 1px 10px 10px 10px;
+
+    color: white;
+}
+
+.deleteButton{
+    width: 120px;
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.34);
+    color: white;
+    background-color: red;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.saveButton{
+    width: 120px;
+    border-radius: 10px 10px 10px 10px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.34);
+    color: white;
+    background-color: #09b385;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-right: 10px;
+}

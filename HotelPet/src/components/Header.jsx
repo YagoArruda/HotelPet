@@ -7,7 +7,8 @@ function Header(){
     const navigate = useNavigate()
 
     function Autenticar(){
-        navigate('/Rents')
+        navigate('/Agenda')
+        //adicionar as verificações do login aqui
     }
 
 

@@ -1,12 +1,12 @@
 import Header from '../components/Header'
-import LoginCard from '../components/LoginCard'
+import LoginBody from '../components/LoginBody'
 
 function Login() {
 
   return (
     <div>
       <Header></Header>
-      <LoginCard></LoginCard>
+      <LoginBody></LoginBody>
     </div>
   )
 

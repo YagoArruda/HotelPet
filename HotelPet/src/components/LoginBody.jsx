@@ -1,13 +1,14 @@
 import '../App.css'
-import './LoginCard.css'
+import './LoginBody.css'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import womanAndCat from '../assets/womanAndCat.svg'
 
-function LoginCard(){
+function LoginBody(){
     const navigate = useNavigate()
     
     function Autenticar(){
-        navigate('/Rents')
+        navigate('/Agenda')
     }
 
     return (
@@ -17,13 +18,17 @@ function LoginCard(){
 
             <div className='loginCard'>
                 <h2>Login</h2>
+
                 <input type="user" className='loginInput' placeholder='Usuario'/>
                 <input type="password" className='loginInput' placeholder='Senha'/>
-                <button className='loginButton' onClick={Autenticar}>Entrar</button>
+
+                <p className='loginButton' onClick={Autenticar}>
+                    <Link to='/' className='noLinkStyle'>Entrar</Link>
+                </p>
             </div>
         </div>
     )
 
 }
 
-export default LoginCard;
+export default LoginBody;

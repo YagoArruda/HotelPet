@@ -1,12 +1,12 @@
 import Header from '../components/Header'
-import RentsBody from '../components/RentsBody'
+import Schedule from '../components/Schedule'
 
 function Rents() {
 
   return (
     <div>
       <Header></Header>
-      <RentsBody></RentsBody>
+      <Schedule></Schedule>
     </div>
   )
 
