@@ -1,11 +1,13 @@
 import '../App.css'
-import './Schedule.css'
+import './ScheduleBody.css'
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Schedule() {
 
     const [agenda, setAgenda] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch('http://localhost:3000/agenda')
@@ -17,7 +19,7 @@ function Schedule() {
         <div>
 
             <div className='justify'>
-                <button className='createButton'>novo agendamento</button>
+                <button className='createButton' onClick={()=>navigate("/Agendar")}>novo agendamento</button>
             </div>
 
             <div className='justify'>

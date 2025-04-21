@@ -5,7 +5,7 @@ const app = express();
 const Porta = 3000;
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: '*' }));
 
 // Caminho pro arquivo JSON
 const CaminhoDB = './db.json';
