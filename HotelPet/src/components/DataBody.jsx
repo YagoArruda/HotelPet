@@ -2,12 +2,15 @@ import '../App.css'
 import './DataBody.css'
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function DataBody() {
 
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const ag = queryParams.get('ag');
+
+    const navigate = useNavigate()
 
     const [agenda, setAgenda] = useState([]);
     useEffect(() => {
@@ -60,12 +63,14 @@ function DataBody() {
     const handleChangeEntrada = (event) => {
         setEntrada(event.target.value);
         setDiarias(duracaoAtual(event.target.value))
+        setDiariasTotais(duracaoTotal(event.target.value, saida))
     };
 
     const [diariasTotais, setDiariasTotais] = useState("*");
     const [saida, setSaida] = useState("");
     const handleChangeSaida = (event) => {
         setSaida(event.target.value);
+        setDiarias(duracaoAtual(entrada))
         setDiariasTotais(duracaoTotal(entrada, event.target.value))
     };
 
@@ -115,24 +120,40 @@ function DataBody() {
             </div>
 
             <div className='justify'>
-                <button className='saveButton'>Salvar</button>
-                <button className='deleteButton'>Excluir</button>
+                <button className='saveButton' onClick={()=>salvarAlteracao(ag,getAgendamento())}>Salvar</button>
+                <button className='deleteButton' onClick={()=>deletar(ag,getAgendamento())}>Excluir</button>
             </div>
         </div>
     )
 
     function duracaoTotal(entrada, saida) {
 
-        if (saida != "*") {
+        if (saida != "*" && saida != "") {
             let _entrada = entrada.split("/")
             let _saida = saida.split("/")
 
             const DataEntrada = new Date(`${_entrada[2]}-${_entrada[1]}-${_entrada[0]}`);
-            const DataSaida = new Date(`${_saida[2]}-${_saida[1]}-${_saida[0]}`);
+            let DataSaida = new Date(`${_saida[2]}-${_saida[1]}-${_saida[0]}`);
+
+            if(_entrada[2] > _saida[2]){
+                DataSaida = DataEntrada
+                setSaida(entrada)
+            }
+            else if(_entrada[1] > _saida[1]){
+                DataSaida = DataEntrada
+                setSaida(entrada)
+            }
+            else if((_entrada[1] == _saida[1])&&(_entrada[0] > _saida[0])){
+                DataSaida = DataEntrada
+                setSaida(entrada)
+            }
 
             const mseg = DataSaida - DataEntrada;
             const dias = mseg / (1000 * 60 * 60 * 24);
 
+            if(dias < 0){
+                return 0
+            }
             return dias
         }
         return "*"
@@ -149,6 +170,9 @@ function DataBody() {
         const mseg = DataAtual - DataEntrada;
         const dias = mseg / (1000 * 60 * 60 * 24);
 
+        if(dias < 0){
+            return 0
+        }
         return Math.floor(dias)
 
     }
@@ -159,6 +183,62 @@ function DataBody() {
             return `${_data[2]}-${_data[1]}-${_data[0]}`;
         }
         return "";
+    }
+
+    function salvarAlteracao(id, agendamentoAtualizado) {
+        fetch(`http://localhost:3000/agenda/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(agendamentoAtualizado)
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Agendamento atualizado com sucesso!");
+                } else {
+                    alert("Erro ao atualizar!");
+                }
+            });
+    }
+
+    function getAgendamento(){
+        let agendamento = {
+            nome_Animal: nomeAnimal,
+            nome_Tutor: nomeTutor,
+            contato_Tutor: contato,
+            especie: opcaoEspecie,
+            raca: raca,
+            entrada: desformatarData(entrada),
+            saida: desformatarData(saida)
+        };
+        return agendamento;
+    }
+
+    function desformatarData(data){
+        if (data !== "*") {
+            let _data = data.split("-");
+            return `${_data[2]}/${_data[1]}/${_data[0]}`;
+        }
+        return "*";
+    }
+
+    function deletar(id){
+        fetch(`http://localhost:3000/agenda/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (res.ok) {
+                    alert("Agendamento excluido com sucesso!");
+                    
+                    navigate('/Agenda')
+                } else {
+                    alert("Erro ao excluir!");
+                }
+            });
     }
 
 
